@@ -2,8 +2,15 @@ import { Router } from 'express';
 import { check } from 'express-validator';
 
 import { createNewUser } from '../controllers/users/create-new-user';
+import { updateUser } from '../controllers/users/update-user';
 
-import { userExists, validPassword } from '../helpers/custom-validators';
+import {
+  userExists,
+  userExistsById,
+  validPasswordToUpdate,
+  validUsernameToUpdate,
+  validPassword,
+} from '../helpers/custom-validators';
 
 import { validateFields } from '../middlewares/validate-fields';
 
@@ -33,6 +40,20 @@ router.post(
     validateFields,
   ],
   createNewUser
+);
+
+router.put(
+  '/update/:id',
+  [
+    check('id').custom(userExistsById),
+
+    check('username').custom(validUsernameToUpdate),
+
+    check('password').custom(validPasswordToUpdate),
+
+    validateFields,
+  ],
+  updateUser
 );
 
 module.exports = router;

@@ -11,6 +11,17 @@ export const userExists = async (username: string) => {
   }
 };
 
+export const userExistsById = async (id: number) => {
+  const user: any = await User.findOne({
+    attributes: ['id'],
+    where: { id },
+  });
+
+  if (!user) {
+    throw new Error(`Username with id ${id} does not exist`);
+  }
+};
+
 export const validPassword = (password: string) => {
   const validPassword = password.match(
     /^(?=.*[0-9])(?=.*[!@#$%^.&*])[a-zA-Z0-9!@#$%^.&*]{8,16}$/
@@ -21,4 +32,19 @@ export const validPassword = (password: string) => {
   }
 
   return true;
+};
+
+export const validPasswordToUpdate = (password: string | null) => {
+  if (!password) return true;
+
+  return validPassword(password);
+};
+
+export const validUsernameToUpdate = (username: string | null) => {
+  if (!username) return true;
+
+  if (username.length < 6)
+    throw new Error('The username should be at least 6 characters long');
+
+  return userExists(username);
 };
