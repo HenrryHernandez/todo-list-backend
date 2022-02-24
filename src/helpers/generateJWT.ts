@@ -6,7 +6,7 @@ export const generateJWT = async (uid: string) => {
 
     jwt.sign(
       payload,
-      process.env.PRIVATE_KEY?.toString() ?? '',
+      process.env.PRIVATE_KEY + '',
       { expiresIn: '10 days' },
       (error, token) => {
         if (error) {
