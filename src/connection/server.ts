@@ -1,11 +1,12 @@
 import express, { Application } from 'express';
 import cors from 'cors';
+
 import db from './database';
 
 class Server {
   private app: Application;
   private port: string;
-  private paths = {};
+  private paths = { users: '/api/users' };
 
   constructor() {
     this.app = express();
@@ -31,7 +32,9 @@ class Server {
     this.app.use(express.json());
   }
 
-  routes() {}
+  routes() {
+    this.app.use(this.paths.users, require('../routes/users.route'));
+  }
 
   listen() {
     this.app.listen(this.port, () => {
