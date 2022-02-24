@@ -13,7 +13,7 @@ export const userExists = async (username: string) => {
 
 export const validPassword = (password: string) => {
   const validPassword = password.match(
-    /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/
+    /^(?=.*[0-9])(?=.*[!@#$%^.&*])[a-zA-Z0-9!@#$%^.&*]{8,16}$/
   );
 
   if (!validPassword) {
