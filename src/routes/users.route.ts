@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { check } from 'express-validator';
 
 import { createNewUser } from '../controllers/users/create-new-user';
+import { deleteUser } from '../controllers/users/delete-user';
 import { updateUser } from '../controllers/users/update-user';
 
 import {
@@ -54,6 +55,12 @@ router.put(
     validateFields,
   ],
   updateUser
+);
+
+router.delete(
+  '/delete/:id',
+  [check('id').custom(userExistsById), validateFields],
+  deleteUser
 );
 
 module.exports = router;
