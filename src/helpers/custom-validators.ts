@@ -22,6 +22,17 @@ export const userExistsById = async (id: number) => {
   }
 };
 
+export const userExistsByUsername = async (username: string) => {
+  const user: any = await User.findOne({
+    attributes: ['id'],
+    where: { username },
+  });
+
+  if (!user) {
+    throw new Error(`Username ${username} does not exist.`);
+  }
+};
+
 export const validPassword = (password: string) => {
   const validPassword = password.match(
     /^(?=.*[0-9])(?=.*[!@#$%^.&*])[a-zA-Z0-9!@#$%^.&*]{8,16}$/
