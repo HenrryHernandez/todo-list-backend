@@ -13,7 +13,6 @@ export const login = async (req: Request, res: Response) => {
         'id',
         'name',
         'lastname1',
-        'lastname2',
         'username',
         'password',
         'profilePicture',
