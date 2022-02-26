@@ -5,6 +5,7 @@ import { login } from '../controllers/auth/login';
 
 import { userExistsByUsername } from '../helpers/custom-validators';
 
+import { validateCorrectPassword } from '../middlewares/validate-correct-password';
 import { validateFields } from '../middlewares/validate-fields';
 
 const router = Router();
@@ -16,6 +17,8 @@ router.post(
     check('username').custom(userExistsByUsername),
 
     check('password', 'Password required.').not().isEmpty(),
+
+    validateCorrectPassword,
 
     validateFields,
   ],

@@ -1,33 +1,16 @@
 import { Request, Response } from 'express';
-import bcryptjs from 'bcryptjs';
 
 import User from '../../models/user.model';
 import { generateJWT } from '../../helpers/generate-jwt';
 
 export const login = async (req: Request, res: Response) => {
-  const { username, password } = req.body;
+  const { username } = req.body;
 
   try {
     const user: any = await User.findOne({
-      attributes: [
-        'id',
-        'name',
-        'lastname1',
-        'username',
-        'password',
-        'profilePicture',
-      ],
+      attributes: ['id', 'name', 'lastname1', 'username', 'profilePicture'],
       where: { username },
     });
-
-    const isValidPassword = bcryptjs.compareSync(password, user.password);
-
-    if (!isValidPassword)
-      return res
-        .status(401)
-        .json({ ok: false, error: null, msg: 'Incorrect password.' });
-
-    delete user.dataValues.password;
 
     const token = await generateJWT(user.id);
 
