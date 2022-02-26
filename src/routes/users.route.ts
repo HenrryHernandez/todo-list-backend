@@ -3,6 +3,10 @@ import { check } from 'express-validator';
 
 import { createNewUser } from '../controllers/users/create-new-user';
 import { deleteUser } from '../controllers/users/delete-user';
+import {
+  getBasicUserInfoById,
+  getFullUserInfoById,
+} from '../controllers/users/get-user';
 import { updateUser } from '../controllers/users/update-user';
 
 import {
@@ -13,7 +17,9 @@ import {
   validPassword,
 } from '../helpers/custom-validators';
 
+import { userAuthorizedToAccessInfo } from '../middlewares/user-allowed-to-access-info';
 import { validateFields } from '../middlewares/validate-fields';
+import { validateJWT } from '../middlewares/validate-jwt';
 
 const router = Router();
 
@@ -61,6 +67,26 @@ router.delete(
   '/delete/:id',
   [check('id').custom(userExistsById), validateFields],
   deleteUser
+);
+
+router.get(
+  '/get',
+  [validateJWT, check('id').custom(userExistsById), validateFields],
+  getBasicUserInfoById
+);
+
+router.get(
+  '/get/:userId',
+  [
+    validateJWT,
+
+    check('userId').custom(userExistsById),
+
+    userAuthorizedToAccessInfo,
+
+    validateFields,
+  ],
+  getFullUserInfoById
 );
 
 module.exports = router;
