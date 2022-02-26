@@ -12,32 +12,33 @@ export const validateJWT = async (
 
   if (!token) {
     return res.status(401).json({
-      msg: 'There is no token in the request',
+      msg: 'There is no token in the request.',
     });
   }
 
   try {
-    const { uid }: any = jwt.verify(
+    const { uid: userId }: any = jwt.verify(
       token,
-      process.env.PRIVATE_KEY?.toString ?? ''
+      process.env.PRIVATE_KEY + ''
     );
 
     const user: any = await User.findOne({
       attributes: ['id'],
-      where: { id: uid },
+      where: { id: userId },
     });
 
     if (!user) {
-      return res.status(401).json({
-        msg: 'User not found',
+      return res.status(404).json({
+        msg: 'User not found.',
       });
     }
 
+    req.params.id = userId;
     next();
   } catch (error) {
     console.log(error);
     res.status(401).json({
-      msg: 'Token no válido',
+      msg: 'Not valid token.',
     });
   }
 };
