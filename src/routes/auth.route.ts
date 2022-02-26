@@ -18,9 +18,9 @@ router.post(
 
     check('password', 'Password required.').not().isEmpty(),
 
-    validateCorrectPassword,
-
     validateFields,
+
+    validateCorrectPassword,
   ],
   login
 );

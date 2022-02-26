@@ -80,9 +80,9 @@ router.get(
   [
     validateJWT,
 
-    check('userId').custom(userExistsById),
-
     userAuthorizedToAccessInfo,
+
+    check('userId').custom(userExistsById),
 
     validateFields,
   ],
