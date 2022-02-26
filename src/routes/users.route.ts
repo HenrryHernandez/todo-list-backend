@@ -17,7 +17,7 @@ import {
   validPassword,
 } from '../helpers/custom-validators';
 
-import { userAuthorizedToAccessInfo } from '../middlewares/user-allowed-to-access-info';
+import { validateUserAuthorizedToAccessInfo } from '../middlewares/validate-user-allowed-to-access-info';
 import { validateFields } from '../middlewares/validate-fields';
 import { validateJWT } from '../middlewares/validate-jwt';
 
@@ -80,7 +80,7 @@ router.get(
   [
     validateJWT,
 
-    userAuthorizedToAccessInfo,
+    validateUserAuthorizedToAccessInfo,
 
     check('userId').custom(userExistsById),
 
