@@ -50,9 +50,13 @@ router.post(
 );
 
 router.put(
-  '/update/:id',
+  '/update/:userId',
   [
-    check('id').custom(userExistsById),
+    validateJWT,
+
+    validateUserAuthorizedToAccessInfo,
+
+    check('userId').custom(userExistsById),
 
     check('username').custom(validUsernameToUpdate),
 
@@ -64,8 +68,16 @@ router.put(
 );
 
 router.delete(
-  '/delete/:id',
-  [check('id').custom(userExistsById), validateFields],
+  '/delete/:userId',
+  [
+    validateJWT,
+
+    validateUserAuthorizedToAccessInfo,
+
+    check('userId').custom(userExistsById),
+
+    validateFields,
+  ],
   deleteUser
 );
 

@@ -3,10 +3,10 @@ import { Request, Response } from 'express';
 import User from '../../models/user.model';
 
 export const deleteUser = async (req: Request, res: Response) => {
-  const { id } = req.params;
+  const { userId } = req.params;
 
   try {
-    await User.destroy({ where: { id } });
+    await User.destroy({ where: { id: userId } });
 
     return res
       .status(200)
