@@ -1,12 +1,14 @@
 import { Router } from 'express';
 
 import { createNewTodo } from '../controllers/todos/create-new-todo';
+import { updateTodo } from '../controllers/todos/update-todo';
 
-import { validateFields } from '../middlewares/validate-fields';
 import { validateJWT } from '../middlewares/validate-jwt';
 
 const router = Router();
 
-router.post('/create', [validateJWT, validateFields], createNewTodo);
+router.post('/create', [validateJWT], createNewTodo);
+
+router.put('/update/:todoId', [validateJWT], updateTodo);
 
 module.exports = router;
