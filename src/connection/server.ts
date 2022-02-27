@@ -6,7 +6,11 @@ import db from './database';
 class Server {
   private app: Application;
   private port: string;
-  private paths = { users: '/api/users', auth: '/api/auth' };
+  private paths = {
+    users: '/api/users',
+    auth: '/api/auth',
+    todos: '/api/todos/',
+  };
 
   constructor() {
     this.app = express();
@@ -35,6 +39,7 @@ class Server {
   routes() {
     this.app.use(this.paths.users, require('../routes/users.route'));
     this.app.use(this.paths.auth, require('../routes/auth.route'));
+    this.app.use(this.paths.todos, require('../routes/todos.route'));
   }
 
   listen() {
