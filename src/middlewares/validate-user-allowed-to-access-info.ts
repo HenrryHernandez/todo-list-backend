@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-export const validateUserAuthorizedToAccessInfo = async (
+export const validateUserAuthorizedToAccessUserInfo = async (
   req: Request,
   res: Response,
   next: NextFunction

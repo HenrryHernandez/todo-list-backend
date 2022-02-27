@@ -17,7 +17,7 @@ import {
   validPassword,
 } from '../helpers/custom-validators';
 
-import { validateUserAuthorizedToAccessInfo } from '../middlewares/validate-user-allowed-to-access-info';
+import { validateUserAuthorizedToAccessUserInfo } from '../middlewares/validate-user-allowed-to-access-info';
 import { validateFields } from '../middlewares/validate-fields';
 import { validateJWT } from '../middlewares/validate-jwt';
 
@@ -54,7 +54,7 @@ router.put(
   [
     validateJWT,
 
-    validateUserAuthorizedToAccessInfo,
+    validateUserAuthorizedToAccessUserInfo,
 
     check('userId').custom(userExistsById),
 
@@ -72,7 +72,7 @@ router.delete(
   [
     validateJWT,
 
-    validateUserAuthorizedToAccessInfo,
+    validateUserAuthorizedToAccessUserInfo,
 
     check('userId').custom(userExistsById),
 
@@ -92,7 +92,7 @@ router.get(
   [
     validateJWT,
 
-    validateUserAuthorizedToAccessInfo,
+    validateUserAuthorizedToAccessUserInfo,
 
     check('userId').custom(userExistsById),
 
