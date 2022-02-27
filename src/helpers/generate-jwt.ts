@@ -11,7 +11,8 @@ export const generateJWT = async (uid: string) => {
       (error, token) => {
         if (error) {
           console.log(error);
-          reject("Token couldn't be generated");
+
+          reject("Token couldn't be generated.");
         } else {
           resolve(token ?? '');
         }

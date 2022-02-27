@@ -16,6 +16,11 @@ export const getTodos = async (req: Request, res: Response) => {
 
     return res
       .status(404)
-      .json({ ok: false, error: error, msg: "Couldn't get todos." });
+      .json({
+        ok: false,
+        error: error,
+        msg: "Couldn't get todos.",
+        todos: null,
+      });
   }
 };

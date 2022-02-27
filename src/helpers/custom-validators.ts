@@ -7,7 +7,7 @@ export const userExists = async (username: string) => {
   });
 
   if (user) {
-    throw new Error('Username already exists');
+    throw new Error('Username already exists.');
   }
 };
 
@@ -18,7 +18,7 @@ export const userExistsById = async (id: number) => {
   });
 
   if (!user) {
-    throw new Error(`Username with id ${id} does not exist`);
+    throw new Error(`Username with id ${id} does not exist.`);
   }
 };
 
@@ -39,7 +39,7 @@ export const validPassword = (password: string) => {
   );
 
   if (!validPassword) {
-    throw new Error('Password not valid');
+    throw new Error('Password not valid.');
   }
 
   return true;
@@ -55,7 +55,7 @@ export const validUsernameToUpdate = (username: string | null) => {
   if (!username) return true;
 
   if (username.length < 6)
-    throw new Error('The username should be at least 6 characters long');
+    throw new Error('The username should be at least 6 characters long.');
 
   return userExists(username);
 };

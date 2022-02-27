@@ -28,6 +28,8 @@ export const login = async (req: Request, res: Response) => {
       ok: false,
       error: error,
       msg: 'Something was wrong while logging in.',
+      user: null,
+      token: null,
     });
   }
 };

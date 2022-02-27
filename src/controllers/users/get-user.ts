@@ -49,6 +49,6 @@ export const getFullUserInfoById = async (req: Request, res: Response) => {
 
     return res
       .status(404)
-      .json({ ok: false, error: error, msg: "Couldn't get user" });
+      .json({ ok: false, error: error, msg: "Couldn't get user.", user: null });
   }
 };

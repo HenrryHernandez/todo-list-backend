@@ -10,12 +10,12 @@ export const deleteUser = async (req: Request, res: Response) => {
 
     return res
       .status(200)
-      .json({ ok: true, error: null, msg: 'User deleted successfully' });
+      .json({ ok: true, error: null, msg: 'User deleted successfully.' });
   } catch (error) {
     console.log(error);
 
     return res
       .status(404)
-      .json({ ok: false, error: error, msg: "User couldn't be deleted" });
+      .json({ ok: false, error: error, msg: "User couldn't be deleted." });
   }
 };

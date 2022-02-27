@@ -17,6 +17,11 @@ export const createNewTodo = async (req: Request, res: Response) => {
 
     return res
       .status(404)
-      .json({ ok: false, error: error, msg: "Todo couldn't be created." });
+      .json({
+        ok: false,
+        error: error,
+        msg: "Todo couldn't be created.",
+        todo: null,
+      });
   }
 };
