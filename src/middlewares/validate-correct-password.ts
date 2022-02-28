@@ -18,9 +18,7 @@ export const validateCorrectPassword = async (
   const isValidPassword = bcryptjs.compareSync(password, user.password);
 
   if (!isValidPassword)
-    return res
-      .status(401)
-      .json({ ok: false, error: null, msg: 'Incorrect password.' });
+    return res.status(401).json({ ok: false, msg: 'Incorrect password.' });
 
   next();
 };

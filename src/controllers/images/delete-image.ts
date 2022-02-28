@@ -16,7 +16,6 @@ export const deleteImage = async (req: Request, res: Response) => {
 
     return res.status(200).json({
       ok: true,
-      error: null,
       msg: 'Image deleted successfully.',
     });
   } catch (error) {
@@ -24,7 +23,7 @@ export const deleteImage = async (req: Request, res: Response) => {
 
     return res
       .status(400)
-      .json({ ok: false, error: null, msg: "Image couldn't be deleted." });
+      .json({ ok: false, msg: "Image couldn't be deleted." });
   }
 };
 

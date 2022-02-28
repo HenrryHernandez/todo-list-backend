@@ -10,12 +10,12 @@ export const deleteTodo = async (req: Request, res: Response) => {
 
     return res
       .status(200)
-      .json({ ok: true, error: null, msg: 'Todo deleted successfully.' });
+      .json({ ok: true, msg: 'Todo deleted successfully.' });
   } catch (error) {
     console.log(error);
 
     return res
       .status(404)
-      .json({ ok: false, error: error, msg: "Todo couldn't be deleted." });
+      .json({ ok: false, msg: "Todo couldn't be deleted." });
   }
 };

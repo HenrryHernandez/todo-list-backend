@@ -15,12 +15,12 @@ export const updateUser = async (req: Request, res: Response) => {
 
     return res
       .status(200)
-      .json({ ok: true, error: null, msg: 'User updated successfully.' });
+      .json({ ok: true, msg: 'User updated successfully.' });
   } catch (error) {
     console.log(error);
 
     return res
       .status(404)
-      .json({ ok: false, error: error, msg: "User couldn't be updated." });
+      .json({ ok: false, msg: "User couldn't be updated." });
   }
 };

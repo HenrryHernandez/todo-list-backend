@@ -10,7 +10,7 @@ export const uploadImage = async (req: Request, res: Response) => {
   try {
     const { imageName }: any = await Image.create(data);
 
-    return res.status(200).json({ ok: true, error: null, msg: '', imageName });
+    return res.status(200).json({ ok: true, msg: '', imageName });
   } catch (error) {
     console.log(error);
 
@@ -18,6 +18,6 @@ export const uploadImage = async (req: Request, res: Response) => {
 
     return res
       .status(400)
-      .json({ ok: false, error: null, msg: "Image couldn't be uploaded." });
+      .json({ ok: false, msg: "Image couldn't be uploaded." });
   }
 };

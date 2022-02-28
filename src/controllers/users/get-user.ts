@@ -15,15 +15,11 @@ export const getBasicUserInfoById = async (req: Request, res: Response) => {
 
     const token = await generateJWT(user.id);
 
-    return res
-      .status(200)
-      .json({ ok: true, error: null, msg: '', user, token });
+    return res.status(200).json({ ok: true, msg: '', user, token });
   } catch (error) {
     console.log(error);
 
-    return res
-      .status(404)
-      .json({ ok: false, error: error, msg: "Couldn't get user" });
+    return res.status(404).json({ ok: false, msg: "Couldn't get user" });
   }
 };
 
@@ -43,12 +39,12 @@ export const getFullUserInfoById = async (req: Request, res: Response) => {
       where: { id: userId },
     });
 
-    return res.status(200).json({ ok: true, error: null, msg: '', user });
+    return res.status(200).json({ ok: true, msg: '', user });
   } catch (error) {
     console.log(error);
 
     return res
       .status(404)
-      .json({ ok: false, error: error, msg: "Couldn't get user.", user: null });
+      .json({ ok: false, msg: "Couldn't get user.", user: null });
   }
 };

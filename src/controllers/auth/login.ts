@@ -16,7 +16,6 @@ export const login = async (req: Request, res: Response) => {
 
     return res.status(200).json({
       ok: true,
-      error: null,
       msg: 'Successful login.',
       user,
       token,
@@ -26,7 +25,6 @@ export const login = async (req: Request, res: Response) => {
 
     return res.status(404).json({
       ok: false,
-      error: error,
       msg: 'Something was wrong while logging in.',
       user: null,
       token: null,

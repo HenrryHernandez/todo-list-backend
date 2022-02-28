@@ -11,12 +11,12 @@ export const updateTodo = async (req: Request, res: Response) => {
 
     return res
       .status(200)
-      .json({ ok: true, error: null, msg: 'Todo updated successfully.' });
+      .json({ ok: true, msg: 'Todo updated successfully.' });
   } catch (error) {
     console.log(error);
 
     return res
       .status(404)
-      .json({ ok: false, error: error, msg: "Todo couldn't be updated." });
+      .json({ ok: false, msg: "Todo couldn't be updated." });
   }
 };

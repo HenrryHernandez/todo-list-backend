@@ -12,7 +12,6 @@ export const validateUserAuthorizedToAccessUserInfo = async (
   if (+userId !== +id) {
     return res.status(401).json({
       ok: false,
-      error: null,
       msg: 'User not authorized to access the information.',
     });
   }
@@ -35,7 +34,6 @@ export const validateUserAuthorizedToAccessTodoInfo = async (
   if (!todo || +userId !== +todo.userId) {
     return res.status(401).json({
       ok: false,
-      error: null,
       msg: 'User not authorized to access the information.',
     });
   }
