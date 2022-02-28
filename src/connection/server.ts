@@ -9,7 +9,8 @@ class Server {
   private paths = {
     users: '/api/users',
     auth: '/api/auth',
-    todos: '/api/todos/',
+    todos: '/api/todos',
+    images: '/api/images',
   };
 
   constructor() {
@@ -40,6 +41,7 @@ class Server {
     this.app.use(this.paths.users, require('../routes/users.route'));
     this.app.use(this.paths.auth, require('../routes/auth.route'));
     this.app.use(this.paths.todos, require('../routes/todos.route'));
+    this.app.use(this.paths.images, require('../routes/images.route'));
   }
 
   listen() {
