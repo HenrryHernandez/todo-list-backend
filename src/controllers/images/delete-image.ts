@@ -18,7 +18,6 @@ export const deleteImage = async (req: Request, res: Response) => {
       ok: true,
       error: null,
       msg: 'Image deleted successfully.',
-      imageName,
     });
   } catch (error) {
     console.log(error);
