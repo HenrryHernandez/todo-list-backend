@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { deleteImage } from '../../helpers/delete-image';
+import { deleteImageFromDisc } from '../../helpers/delete-image-from-disc';
 
 import Image from '../../models/image.model';
 
@@ -14,7 +14,7 @@ export const uploadImage = async (req: Request, res: Response) => {
   } catch (error) {
     console.log(error);
 
-    deleteImage(data.imageName);
+    deleteImageFromDisc(data.imageName);
 
     return res
       .status(400)
