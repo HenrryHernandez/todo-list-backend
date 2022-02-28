@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+
 import { deleteImage } from '../../helpers/delete-image';
 
 import Image from '../../models/image.model';
