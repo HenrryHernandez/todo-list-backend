@@ -5,3 +5,7 @@ export const defaultImagePath = path.join(
   __dirname,
   '../assets/default-image.jpeg'
 );
+export const accessDiniedImagePath = path.join(
+  __dirname,
+  '../assets/access-dinied.png'
+);
