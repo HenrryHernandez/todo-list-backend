@@ -6,7 +6,7 @@ import User from '../../models/user.model';
 
 export const updateUser = async (req: Request, res: Response) => {
   const { userId } = req.params;
-  const { ...data } = req.body;
+  const { id, createdAt, updatedAt, ...data } = req.body;
 
   if (data.password) data.password = getEncryptedPassword(data.password);
 

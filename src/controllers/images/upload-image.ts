@@ -5,7 +5,7 @@ import { deleteImageFromDisc } from '../../helpers/delete-image-from-disc';
 import Image from '../../models/image.model';
 
 export const uploadImage = async (req: Request, res: Response) => {
-  const { ...data } = req.body;
+  const { id, createdAt, updatedAt, ...data } = req.body;
 
   try {
     const { imageName }: any = await Image.create(data);

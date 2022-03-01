@@ -5,7 +5,7 @@ import { getEncryptedPassword } from '../../helpers/encryptions';
 import User from '../../models/user.model';
 
 export const createNewUser = async (req: Request, res: Response) => {
-  const { ...data } = req.body;
+  const { id, createdAt, updatedAt, ...data } = req.body;
 
   data.password = getEncryptedPassword(data.password);
 

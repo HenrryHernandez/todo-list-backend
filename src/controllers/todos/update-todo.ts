@@ -4,10 +4,10 @@ import Todo from '../../models/todo.model';
 
 export const updateTodo = async (req: Request, res: Response) => {
   const { todoId } = req.params;
-  const { ...data } = req.body;
+  const { title, description } = req.body;
 
   try {
-    await Todo.update(data, { where: { id: todoId } });
+    await Todo.update({ title, description }, { where: { id: todoId } });
 
     return res
       .status(200)
