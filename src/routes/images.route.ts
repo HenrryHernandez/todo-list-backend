@@ -17,7 +17,7 @@ const router = Router();
 
 router.post(
   '/upload',
-  [validateJWT, validateFields, upload.array('todo-image'), sharpTodoImage],
+  [validateJWT, validateFields, upload.array('todoImage'), sharpTodoImage],
   uploadImage
 );
 
@@ -26,7 +26,7 @@ router.post(
   [
     validateJWT,
     validateFields,
-    upload.array('profile-picture'),
+    upload.array('profilePicture'),
     sharpProfilePicture,
   ],
   uploadProfilePicture
