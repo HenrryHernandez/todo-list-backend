@@ -9,7 +9,7 @@ export const sharpTodoImage = async (
 ) => {
   const [file]: any = req.files;
 
-  const newName = sharpImage(file);
+  const newName = await sharpImage(file);
 
   req.body.imageName = newName;
 
