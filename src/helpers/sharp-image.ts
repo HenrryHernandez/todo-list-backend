@@ -1,16 +1,9 @@
-import { Request, Response, NextFunction } from 'express';
-import sharp from 'sharp';
 import fs from 'fs';
+import sharp from 'sharp';
 
 import { imagesPath } from '../utils/app-strings';
 
-export const sharpImage = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const [file]: any = req.files;
-
+export const sharpImage = async (file: any) => {
   const { filename, originalname } = file;
   const newName = `${originalname.split('.')[0]}_${filename}`;
 
@@ -23,7 +16,5 @@ export const sharpImage = async (
 
   fs.unlinkSync(file.path);
 
-  req.body.imageName = newName;
-
-  next();
+  return newName;
 };
