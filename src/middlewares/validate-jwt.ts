@@ -29,7 +29,7 @@ export const validateJWT = async (
     });
 
     if (!user) {
-      return res.status(404).json({
+      return res.status(401).json({
         msg: 'User of token not found.',
       });
     }
