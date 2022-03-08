@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { TokenExpiredError } from 'jsonwebtoken';
 
 import User from '../models/user.model';
 
@@ -37,7 +37,12 @@ export const validateJWT = async (
     req.params.id = userId;
     next();
   } catch (error) {
-    console.log(error);
+    if (error instanceof TokenExpiredError) {
+      return res.status(403).json({
+        msg: 'Token expired.',
+      });
+    }
+
     res.status(401).json({
       msg: 'Not valid token.',
     });
