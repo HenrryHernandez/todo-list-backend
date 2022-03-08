@@ -8,7 +8,8 @@ export const validateJWT = async (
   res: Response,
   next: NextFunction
 ) => {
-  const token = req.header('tiktoken');
+  let token = req.header('Authorization') || req.header('access-token');
+  token = token?.replace(/^Bearer\s+/, '');
 
   if (!token) {
     return res.status(401).json({
