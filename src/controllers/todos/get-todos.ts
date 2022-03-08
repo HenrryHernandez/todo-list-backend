@@ -33,12 +33,12 @@ export const getTodos = async (req: Request, res: Response) => {
 const getTodoImages = async (todoId: number) => {
   try {
     const images: any = await Image.findAll({
-      attributes: ['imageName'],
+      attributes: ['id', 'imageName'],
       where: { todoId },
     });
 
     const todoImages = images.map((image: any) => {
-      return image.imageName;
+      return { id: image.id, imageName: image.imageName };
     });
 
     return todoImages;
