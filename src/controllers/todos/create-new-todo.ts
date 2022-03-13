@@ -7,11 +7,18 @@ export const createNewTodo = async (req: Request, res: Response) => {
   const { title = '', description = '' } = req.body;
 
   try {
-    const todo = await Todo.create({ userId, title, description });
+    const todo: any = await Todo.create({ userId, title, description });
 
-    return res
-      .status(200)
-      .json({ ok: true, msg: 'Todo created successfully.', todo });
+    return res.status(200).json({
+      ok: true,
+      msg: 'Todo created successfully.',
+      todo: {
+        id: todo.id,
+        title: todo.title,
+        description: todo.description,
+        images: [],
+      },
+    });
   } catch (error) {
     console.log(error);
 
