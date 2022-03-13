@@ -36,7 +36,7 @@ router.delete('/delete/:imageId', [validateJWT, validateFields], deleteImage);
 
 router.get(
   '/:imageName',
-  [validateJWT, validateFields, validateCanGetImage],
+  // [validateJWT, validateFields, validateCanGetImage],
   getImage
 );
 
