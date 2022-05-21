@@ -8,9 +8,9 @@ export const uploadImage = async (req: Request, res: Response) => {
   const { id, createdAt, updatedAt, ...data } = req.body;
 
   try {
-    const { imageName }: any = await Image.create(data);
+    const { id, imageName }: any = await Image.create(data);
 
-    return res.status(200).json({ ok: true, msg: '', imageName });
+    return res.status(200).json({ ok: true, msg: '', id, imageName });
   } catch (error) {
     console.log(error);
 
